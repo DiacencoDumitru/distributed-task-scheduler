@@ -75,3 +75,12 @@ Meaningful benchmarks should separate CPU-bound and I/O-bound workloads and repo
 - Add shard-aware scheduling for very large queue volumes
 - Add per-tenant quotas and fairness controls
 - Add operational dashboard for retry storms and DLQ trends
+
+## Benchmark Methodology
+
+For scheduler performance validation, benchmark with:
+
+- Separate CPU-bound and I/O-bound task profiles
+- Fixed retry policy and bounded concurrency levels
+- Queue depth, completion latency, and success-rate metrics
+- Dedicated reporting for DLQ rate and retry amplification
