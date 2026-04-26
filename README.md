@@ -21,13 +21,19 @@ Background work such as notifications, payment retries, and asynchronous workflo
 
 ```mermaid
 flowchart LR
-    Producer["Producer"] --> Scheduler["Scheduler"]
-    Scheduler --> ReadyQueue["Ready Queue"]
+    Producer["Producer"] --> Persist["Persist Task + Metadata"]
+    Persist --> Scheduler["Scheduler Scanner"]
+    Scheduler --> DueCheck{"Task Due?"}
+    DueCheck -->|No| Scheduler
+    DueCheck -->|Yes| ReadyQueue["Ready Queue"]
     ReadyQueue --> Worker["Worker Pool"]
-    Worker --> Ack["Acknowledge"]
-    Worker --> Retry["Retry with Backoff"]
-    Retry --> Scheduler
-    Worker --> DLQ["Dead Letter Queue"]
+    Worker --> Execute["Execute Task"]
+    Execute --> Result{"Success?"}
+    Result -->|Yes| Ack["Ack + Complete"]
+    Result -->|No| RetryCheck{"Attempts Left?"}
+    RetryCheck -->|Yes| Backoff["Compute Backoff Delay"]
+    Backoff --> Scheduler
+    RetryCheck -->|No| DLQ["Dead Letter Queue"]
 ```
 
 ## How it works (high level)
