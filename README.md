@@ -17,16 +17,28 @@ Background work such as notifications, payment retries, and asynchronous workflo
 - Task lifecycle state tracking
 - Redis/Kafka-backed persistence options
 
-## Architecture Overview
+## Architecture
 
-`Producer -> Scheduler -> Ready Queue -> Worker Pool -> Ack/Retry/DLQ`
+```mermaid
+flowchart LR
+    Producer["Producer"] --> Scheduler["Scheduler"]
+    Scheduler --> ReadyQueue["Ready Queue"]
+    ReadyQueue --> Worker["Worker Pool"]
+    Worker --> Ack["Acknowledge"]
+    Worker --> Retry["Retry with Backoff"]
+    Retry --> Scheduler
+    Worker --> DLQ["Dead Letter Queue"]
+```
 
-- Producers submit tasks with execution metadata
-- Scheduler promotes due tasks into execution queues
-- Workers execute and report outcome
-- Failed tasks are retried or moved to DLQ by policy
+## How it works (high level)
 
-## How It Works
+- Producers submit tasks with schedule and retry metadata.
+- Scheduler moves due tasks into a ready queue for execution.
+- Workers consume and execute tasks in parallel.
+- Successful execution is acknowledged and finalized.
+- Failures are retried with backoff or routed to DLQ after max attempts.
+
+## How It Works (Detailed)
 
 ### Scheduling and Dispatch
 
