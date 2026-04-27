@@ -102,3 +102,32 @@ For scheduler performance validation, benchmark with:
 - Fixed retry policy and bounded concurrency levels
 - Queue depth, completion latency, and success-rate metrics
 - Dedicated reporting for DLQ rate and retry amplification
+
+## Implemented First PR: Distributed Dispatch Rate Limiter
+
+This repository now includes a Redis-backed distributed rate limiter for worker dispatch coordination.
+
+### Package Structure
+
+- `com.diacenco.scheduler.dispatch.api` - HTTP API for requesting dispatch permits
+- `com.diacenco.scheduler.dispatch.application` - application service for dispatch decisions
+- `com.diacenco.scheduler.ratelimit.domain` - rate limiter abstractions and permit model
+- `com.diacenco.scheduler.ratelimit.infrastructure` - Redis + Lua atomic limiter implementation
+- `com.diacenco.scheduler.ratelimit.config` - strongly typed rate limiter configuration
+
+### Default Configuration
+
+```yaml
+scheduler:
+  dispatch:
+    rate-limit:
+      limit: 10
+      window-seconds: 1
+      key-prefix: dts:ratelimit:dispatch
+```
+
+### API
+
+- `POST /api/v1/dispatch/permit`
+    - `200 OK` - permit granted
+    - `429 TOO_MANY_REQUESTS` - rate limit exceeded

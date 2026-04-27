@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: distributed-task-scheduler
+  data:
+    redis:
+      connect-timeout: 2s
+      timeout: 3s
+
+scheduler:
+  dispatch:
+    rate-limit:
+      limit: 10
+      window-seconds: 1
+      key-prefix: dts:ratelimit:dispatch
