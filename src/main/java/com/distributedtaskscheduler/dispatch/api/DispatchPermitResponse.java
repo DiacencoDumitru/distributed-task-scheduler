@@ -1,6 +1,6 @@
-package com.diacenco.scheduler.dispatch.api;
+package com.distributedtaskscheduler.dispatch.api;
 
-import com.diacenco.scheduler.ratelimit.domain.DispatchPermit;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
 
 public record DispatchPermitResponse(
         boolean allowed,

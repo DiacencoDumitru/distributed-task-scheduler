@@ -1,4 +1,4 @@
-package com.diacenco.scheduler.support;
+package com.distributedtaskscheduler.support;
 
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;

@@ -1,7 +1,7 @@
-package com.diacenco.scheduler.dispatch.api;
+package com.distributedtaskscheduler.dispatch.api;
 
-import com.diacenco.scheduler.dispatch.application.WorkerDispatchService;
-import com.diacenco.scheduler.ratelimit.domain.DispatchPermit;
+import com.distributedtaskscheduler.dispatch.application.WorkerDispatchService;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

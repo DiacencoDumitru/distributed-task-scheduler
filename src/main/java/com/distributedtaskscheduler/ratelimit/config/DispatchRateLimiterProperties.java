@@ -1,4 +1,4 @@
-package com.diacenco.scheduler.ratelimit.config;
+package com.distributedtaskscheduler.ratelimit.config;
 
 import jakarta.validation.constraints.Min;
 import org.springframework.boot.context.properties.ConfigurationProperties;
