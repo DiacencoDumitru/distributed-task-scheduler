@@ -1,8 +1,8 @@
-package com.diacenco.scheduler.ratelimit.infrastructure;
+package com.distributedtaskscheduler.ratelimit.infrastructure;
 
-import com.diacenco.scheduler.ratelimit.config.DispatchRateLimiterProperties;
-import com.diacenco.scheduler.ratelimit.domain.DispatchPermit;
-import com.diacenco.scheduler.ratelimit.domain.DispatchRateLimiter;
+import com.distributedtaskscheduler.ratelimit.config.DispatchRateLimiterProperties;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchRateLimiter;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.RedisScript;
 import org.springframework.stereotype.Component;

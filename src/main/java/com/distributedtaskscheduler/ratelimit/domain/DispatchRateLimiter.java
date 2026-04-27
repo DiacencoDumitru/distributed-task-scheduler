@@ -1,4 +1,4 @@
-package com.diacenco.scheduler.ratelimit.domain;
+package com.distributedtaskscheduler.ratelimit.domain;
 
 public interface DispatchRateLimiter {
 

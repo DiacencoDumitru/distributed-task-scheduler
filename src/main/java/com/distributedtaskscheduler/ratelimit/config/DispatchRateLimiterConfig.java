@@ -1,4 +1,4 @@
-package com.diacenco.scheduler.ratelimit.config;
+package com.distributedtaskscheduler.ratelimit.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

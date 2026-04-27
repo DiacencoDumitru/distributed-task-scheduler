@@ -1,4 +1,4 @@
-package com.diacenco.scheduler;
+package com.distributedtaskscheduler;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

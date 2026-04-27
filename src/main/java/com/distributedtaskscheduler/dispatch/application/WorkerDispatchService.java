@@ -1,7 +1,7 @@
-package com.diacenco.scheduler.dispatch.application;
+package com.distributedtaskscheduler.dispatch.application;
 
-import com.diacenco.scheduler.ratelimit.domain.DispatchPermit;
-import com.diacenco.scheduler.ratelimit.domain.DispatchRateLimiter;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchRateLimiter;
 import org.springframework.stereotype.Service;
 
 @Service

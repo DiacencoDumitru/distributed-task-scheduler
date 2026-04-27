@@ -1,7 +1,7 @@
-package com.diacenco.scheduler.dispatch.application;
+package com.distributedtaskscheduler.dispatch.application;
 
-import com.diacenco.scheduler.ratelimit.domain.DispatchPermit;
-import com.diacenco.scheduler.support.RedisIntegrationTestBase;
+import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
+import com.distributedtaskscheduler.support.RedisIntegrationTestBase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
