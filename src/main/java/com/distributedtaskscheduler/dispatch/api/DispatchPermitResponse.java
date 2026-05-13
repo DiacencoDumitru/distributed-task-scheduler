@@ -1,7 +1,9 @@
 package com.distributedtaskscheduler.dispatch.api;
 
 import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
+import io.swagger.v3.oas.annotations.media.Schema;
 
+@Schema(name = "DispatchPermitResponse")
 public record DispatchPermitResponse(
         boolean allowed,
         long currentHits,
