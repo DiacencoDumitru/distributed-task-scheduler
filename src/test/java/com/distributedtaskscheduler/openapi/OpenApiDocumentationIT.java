@@ -23,6 +23,8 @@ class OpenApiDocumentationIT extends RedisIntegrationTestBase {
         mockMvc.perform(get("/v3/api-docs"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.paths['/api/v1/dispatch/permit']").exists())
-                .andExpect(jsonPath("$.paths['/api/v1/dispatch/permit'].post").exists());
+                .andExpect(jsonPath("$.paths['/api/v1/dispatch/permit'].post").exists())
+                .andExpect(jsonPath("$.paths['/api/v1/dispatch/permit'].post.parameters[0].name").value("X-Worker-Id"))
+                .andExpect(jsonPath("$.paths['/api/v1/dispatch/permit'].post.parameters[0].required").value(false));
     }
 }

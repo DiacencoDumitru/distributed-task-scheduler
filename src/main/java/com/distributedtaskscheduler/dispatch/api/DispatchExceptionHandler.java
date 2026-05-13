@@ -1,5 +1,6 @@
 package com.distributedtaskscheduler.dispatch.api;
 
+import com.distributedtaskscheduler.dispatch.application.InvalidWorkerIdException;
 import com.distributedtaskscheduler.ratelimit.domain.DispatchPermit;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -22,5 +23,15 @@ public class DispatchExceptionHandler {
         return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS)
                 .header(HttpHeaders.RETRY_AFTER, Long.toString(permit.windowSeconds()))
                 .body(problemDetail);
+    }
+
+    @ExceptionHandler(InvalidWorkerIdException.class)
+    public ResponseEntity<ProblemDetail> handleInvalidWorkerId(InvalidWorkerIdException ex) {
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage()
+        );
+        problemDetail.setTitle("Invalid worker id");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(problemDetail);
     }
 }
