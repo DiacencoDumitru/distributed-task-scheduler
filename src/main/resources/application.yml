@@ -12,3 +12,13 @@ scheduler:
       limit: 10
       window-seconds: 1
       key-prefix: dts:ratelimit:dispatch
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      probes:
+        enabled: true
