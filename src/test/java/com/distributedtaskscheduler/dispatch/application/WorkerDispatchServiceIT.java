@@ -32,10 +32,10 @@ class WorkerDispatchServiceIT extends RedisIntegrationTestBase {
 
     @Test
     void shouldAllowOnlyConfiguredNumberOfDispatchesPerWindow() {
-        DispatchPermit first = workerDispatchService.requestDispatchPermit();
-        DispatchPermit second = workerDispatchService.requestDispatchPermit();
-        DispatchPermit third = workerDispatchService.requestDispatchPermit();
-        DispatchPermit fourth = workerDispatchService.requestDispatchPermit();
+        DispatchPermit first = workerDispatchService.requestDispatchPermit("global");
+        DispatchPermit second = workerDispatchService.requestDispatchPermit("global");
+        DispatchPermit third = workerDispatchService.requestDispatchPermit("global");
+        DispatchPermit fourth = workerDispatchService.requestDispatchPermit("global");
 
         assertThat(first.allowed()).isTrue();
         assertThat(second.allowed()).isTrue();
